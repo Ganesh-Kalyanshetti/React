@@ -21,7 +21,7 @@ pipeline
 			
 			script{
 			
-			docker-img= docker.build('${DOCKERIMAGE}:latest')
+			dockerimg= docker.build('${DOCKERIMAGE}:latest')
 			}
 			}
 		}
@@ -32,7 +32,7 @@ pipeline
 				{
 					docker.withRegistry('https://index.docker.io/v1/',"dockerhostid")
 				{
-					docker-img.push()
+					dockerimg.push()
 				}
 			}
 			}
