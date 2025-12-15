@@ -4,7 +4,7 @@ pipeline
 	environment
 	{
 		DOCKER_CREDENTIALS = credentials('dockerhostid') 
-		DOCKER-IMAGE = 'ganesh021/rectapp'
+		DOCKERIMAGE = 'ganesh021/rectapp'
 	}
 	stages
 	{
@@ -21,7 +21,7 @@ pipeline
 			
 			script{
 			
-			docker-img= docker.build('${DOCKER-IMAGE}:latest')
+			docker-img= docker.build('${DOCKERIMAGE}:latest')
 			}
 			}
 		}
