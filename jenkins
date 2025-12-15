@@ -21,7 +21,7 @@ pipeline
 			
 			script{
 			
-			dockerimg= docker.build('${DOCKERIMAGE}:latest')
+			dockerimg= docker.build("${DOCKERIMAGE}:latest")
 			}
 			}
 		}
