@@ -3,7 +3,7 @@ pipeline
 	agent any
 	environment
 	{
-		DOCKER_CREDENTIALS = credentials('dockerhostid') 
+		DOCKER_CREDENTIALS = credentials('dockerhostid')
 		DOCKERIMAGE = 'ganesh021/rectapp'
 	}
 	stages
