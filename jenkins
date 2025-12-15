@@ -1,0 +1,51 @@
+pipeline
+{
+	agent any
+	environment
+	{
+		DOCKER_CREDENTIALS = credentials('hostid') 
+		DOCKER-IMAGE = 'ganesh021/rect-app'
+	}
+	stages
+	{
+		stage('Git link')
+		{
+			steps
+			{
+				git branch : main , url = 'https://github.com/Ganesh-Kalyanshetti/React.git'
+			}
+		}
+		stage('Create docker image')
+		{
+			steps{
+			
+			script{
+			
+			docker-img= docker.build('${DOCKER-IMAGE}:latest')
+			}
+			}
+		}
+		stage('push to dockerhub')
+		{
+			steps{
+			script
+				{
+					docker.withRegistry('https://index.docker.io/v1/',"hostid")
+				{
+					docker-img.push()
+				}
+			}
+			}
+		}
+	}
+	post
+	{
+		success{
+			echo "completed"
+		}
+		failure
+		{
+			echo "Failed"
+		}
+	}
+}
